@@ -9,41 +9,36 @@
         .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; max-width: 500px; }
         h1 { color: #333; }
         p { color: #666; font-size: 14px; line-height: 1.6; }
-        button { background: #007bff; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 10px; transition: background 0.2s; }
-        button:hover { background: #0056b3; }
+        .btn-bookmark { display: inline-block; background: #28a745; color: white; text-decoration: none; padding: 12px 24px; font-size: 16px; border-radius: 5px; font-weight: bold; margin: 15px 0; border: 2px dashed #fff; box-shadow: 0 0 0 2px #28a745; cursor: move; }
+        .btn-link { background: #007bff; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 10px; }
         .step { background: #e9ecef; padding: 10px; border-radius: 5px; font-weight: bold; margin: 15px 0; color: #495057; }
+        .notice { background: #fff3cd; color: #856404; padding: 10px; border-radius: 5px; font-size: 12px; text-align: left; margin-top: 15px; }
     </style>
 </head>
 <body>
 
 <div class="card">
     <h1>⌨️ Auto Typer 起動センター</h1>
-    <p>Tampermonkey（拡張機能）なしで自動タイピングを起動します。</p>
+    <p>拡張機能なし・アドレスバーへの手入力なしで起動します。</p>
     
-    <div class="step">ステップ 1</div>
-    <p>下のボタンを押して、自動化スクリプトをコピーします。</p>
-    <button onclick="copyScript()">コードをコピーする</button>
+    <div class="step">ステップ 1：お気に入りに登録（初回のみ）</div>
+    <p>下の緑のボタンを、<b>ブラウザのブックマークバー（お気に入り欄）へドラッグ＆ドロップ</b>してください。</p>
+    
+    <!-- ここがブックマークレットになります -->
+    <a class="btn-bookmark" href="javascript:(async()=>{if(window.__autoJapaneseTyper?.stop){window.__autoJapaneseTyper.stop()}const s=document.createElement('script');s.src='https://Ryu-376.github.io/autotyping/auto-typer.user.js';document.body.appendChild(s);})();">★ Auto Typerを登録</a>
 
-    <div class="step">ステップ 2</div>
-    <p>コピーできたら下のボタンを押してタイピングサイトを開きます。<br><strong>開いたら、アドレスバー（URL欄）にそのまま貼り付けてEnterを押すだけ！</strong><br>（もう javascript: と手入力する必要はありません）</p>
-    <button onclick="openTargetSite()">タイピングサイトを開く</button>
+    <div class="step">ステップ 2：自動化を実行</div>
+    <p>下のボタンからタイピングサイトを開きます。</p>
+    <button class="btn-link" onclick="openTargetSite()">タイピングサイトを開く</button>
+    <p style="margin-top: 10px;">サイトが開いたら、先ほど登録した<b>「★ Auto Typerを登録」をクリック</b>するだけで自動入力が始まります！</p>
+
+    <div class="notice">
+        ※ ブックマークバーが表示されていない場合は、キーボードの「Ctrl + Shift + B」（Macは「Cmd + Shift + B」）を押すと表示されます。
+    </div>
 </div>
 
 <script>
-    // 実際に実行するブックマークレットのコード
-    // ファイル名を実際の「auto-typer.user.js」に修正し、最初から「javascript:」を合体させてあります
-    const bookmarkletCode = "javascript:(async()=>{if(window.__autoJapaneseTyper?.stop){window.__autoJapaneseTyper.stop()}const s=document.createElement('script');s.src='https://Ryu-376.github.io/autotyping/auto-typer.user.js';document.body.appendChild(s);})();";
-
-    function copyScript() {
-        navigator.clipboard.writeText(bookmarkletCode).then(() => {
-            alert("コピーが完了しました！ステップ2へ進んでください。");
-        }).catch(err => {
-            alert("コピーに失敗しました。ブラウザの設定を確認してください。");
-        });
-    }
-
     function openTargetSite() {
-        // 対象のタイピングサイトを開く
         window.open('https://otonasi-muonn.github.io/typing_game/', '_blank');
     }
 </script>
