@@ -2,47 +2,23 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Typer 起動ページ</title>
+    <title>Auto Typer</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f0f2f5; }
-        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: inline-block; max-width: 500px; }
-        h1 { color: #333; }
-        p { color: #666; font-size: 14px; line-height: 1.6; }
-        .btn-bookmark { display: inline-block; background: #28a745; color: white; text-decoration: none; padding: 12px 24px; font-size: 16px; border-radius: 5px; font-weight: bold; margin: 15px 0; border: 2px dashed #fff; box-shadow: 0 0 0 2px #28a745; cursor: move; }
-        .btn-link { background: #007bff; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 5px; cursor: pointer; font-weight: bold; margin: 10px; }
-        .step { background: #e9ecef; padding: 10px; border-radius: 5px; font-weight: bold; margin: 15px 0; color: #495057; }
-        .notice { background: #fff3cd; color: #856404; padding: 10px; border-radius: 5px; font-size: 12px; text-align: left; margin-top: 15px; }
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background: #f0f2f5; }
+        .btn { display: inline-block; padding: 12px 24px; font-weight: bold; border-radius: 5px; text-decoration: none; margin: 10px; cursor: pointer; }
+        .reg { background: #28a745; color: white; border: 2px dashed #fff; box-shadow: 0 0 0 2px #28a745; }
+        .open { background: #007bff; color: white; border: none; font-size: 16px; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>⌨️ Auto Typer 起動センター</h1>
-    <p>拡張機能なし・アドレスバーへの手入力なしで起動します。</p>
+    <h1>⌨️ Auto Typer 起動</h1>
     
-    <div class="step">ステップ 1：お気に入りに登録（初回のみ）</div>
-    <p>下の緑のボタンを、<b>ブラウザのブックマークバー（お気に入り欄）へドラッグ＆ドロップ</b>してください。</p>
-    
-    <!-- ここがブックマークレットになります -->
-    <a class="btn-bookmark" href="javascript:(async()=>{if(window.__autoJapaneseTyper?.stop){window.__autoJapaneseTyper.stop()}const s=document.createElement('script');s.src='https://Ryu-376.github.io/autotyping/auto-typer.user.js';document.body.appendChild(s);})();">★ Auto Typerを登録</a>
+    <p>① 下の緑のボタンを<b>上のブックマークバーへドラッグ</b>してください。</p>
+    <a class="btn reg" href="javascript:(async()=>{if(window.__autoJapaneseTyper?.stop){window.__autoJapaneseTyper.stop()}const s=document.createElement('script');s.src='https://Ryu-376.github.io/autotyping/auto-typer.user.js';document.body.appendChild(s);})();">★ Auto Typerを登録</a>
 
-    <div class="step">ステップ 2：自動化を実行</div>
-    <p>下のボタンからタイピングサイトを開きます。</p>
-    <button class="btn-link" onclick="openTargetSite()">タイピングサイトを開く</button>
-    <p style="margin-top: 10px;">サイトが開いたら、先ほど登録した<b>「★ Auto Typerを登録」をクリック</b>するだけで自動入力が始まります！</p>
-
-    <div class="notice">
-        ※ ブックマークバーが表示されていない場合は、キーボードの「Ctrl + Shift + B」（Macは「Cmd + Shift + B」）を押すと表示されます。
-    </div>
-</div>
-
-<script>
-    function openTargetSite() {
-        window.open('https://otonasi-muonn.github.io/typing_game/', '_blank');
-    }
-</script>
+    <p>② 下のボタンでサイトを開き、開いたら<b>登録したブックマークをクリック</b>します。</p>
+    <button class="btn open" onclick="window.open('https://otonasi-muonn.github.io/typing_game/', '_blank')">タイピングサイトを開く</button>
 
 </body>
 </html>
-
