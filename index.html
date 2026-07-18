@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>自動タイピング起動センター</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .btn { display: inline-block; padding: 15px 30px; margin: 10px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .btn-next { background: #28a745; }
+        textarea { width: 1px; height: 1px; opacity: 0; position: absolute; } /* 隠しテキストエリア */
+    </style>
+</head>
+<body>
+
+    <h1>タイピング自動化システム</h1>
+    <p>以下のステップを順番にクリックしてください（登録は一切不要です）。</p>
+
+    <!-- ステップ1: コードをクリップボードに自動コピー -->
+    <div class="btn" onclick="copyCode()">ステップ1：コードをコピーする</div>
+
+    <!-- ステップ2: 他人のタイピングサイトを別タブで開く -->
+    <a href="https://otonasi-muonn.github.io/typing_game/" target="_blank" class="btn btn-next">ステップ2：サイトを開いて貼り付ける</a>
+
+    <!-- コピー用の隠し要素 -->
+    <textarea id="codeArea">javascript:(async()=>{if(window.__autoJapaneseTyper?.stop){window.__autoJapaneseTyper.stop()}const s=document.createElement('script');s.src='https://Ryu-376.github.io/auto-typer.user.js/auto-typer.user.js';document.body.appendChild(s);})();</textarea>
+
+    <script>
+    function copyCode() {
+        const copyText = document.getElementById("codeArea");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // スマホ対応
+        document.execCommand("copy");
+        alert("コードをコピーしました！次のボタンでサイトを開き、URL欄に貼り付けてEnterを押してください。");
+    }
+    </script>
+
+</body>
+</html>
